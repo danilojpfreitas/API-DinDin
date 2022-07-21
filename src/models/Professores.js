@@ -2,27 +2,16 @@
 const db = require("../database");
 // importando o sequelize, desestruturando
 const { DataTypes } = require("sequelize");
-const Professores = require("./Professores");
 
 // construcao de nosso modelo do banco de dados
-const Cursos = db.define("Cursos", {
+const Professores = db.define("Professores", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true, 
         autoIncrement: true
     },
-    titulo: {
+    nome: {
         type: DataTypes.STRING
-    },
-    descricao: {
-        type: DataTypes.STRING
-    },
-    professores_id: {
-        type: DataTypes.INTEGER,
-        references:{
-            model: Professores,
-            key: "id",
-        },
     },
     createdAt: {
         type: DataTypes.DATE
@@ -32,4 +21,4 @@ const Cursos = db.define("Cursos", {
     }
 });
 
-module.exports = Cursos;
+module.exports = Professores;
