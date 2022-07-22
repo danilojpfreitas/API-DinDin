@@ -1,4 +1,4 @@
-const {Cursos , Professores} = require("../models");
+const {Cursos , Professores, Alunos} = require("../models");
 
 const cursosController = {
     async listarCursos(req, res){
@@ -10,7 +10,7 @@ const cursosController = {
         res.status(200).json(listaDeCursos)
     },
     async cadastrarCursos(req, res){
-        const {titulo, professor, descricao, professores_id} = req.body;
+        const {titulo, professor, descricao, professores_id, alunos_id} = req.body;
 
         const novoCurso = await Cursos.create({
             titulo,
@@ -19,7 +19,10 @@ const cursosController = {
             professores_id
         });
 
-        //
+        // associacoes N para N com metodos especiais
+        const aluno = await Alunos.findByPk(alunos_id)
+
+        await novoCurso.setAlunos(aluno);
 
         res.status(201).json(novoCurso);
     },

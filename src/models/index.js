@@ -8,7 +8,11 @@ Professores.hasMany(Cursos, {
     foreignKey: "professores_id",
 });
 
-// relacionar muitos para muitos; com uma associcao intermediaria
+Cursos.belongsTo(Professores, {
+    foreignKey: "professores_id",
+});
+
+// relacionar muitos para muitos; com uma associacao intermediaria
 Alunos.belongsToMany(Cursos, { 
     foreignKey: "alunos_id",
     through: CursosAlunos,
