@@ -2,6 +2,7 @@ const Cursos = require("./Cursos");
 const Professores = require("./Professores");
 const Alunos = require("./Alunos");
 const CursosAlunos = require("./CursosAlunos");
+const Usuarios = require("./Usuarios");
 
 // relacionar um para muitos
 Professores.hasMany(Cursos, {
@@ -27,5 +28,6 @@ module.exports = {
     Cursos,
     Professores,
     Alunos,
-    CursosAlunos
+    CursosAlunos,
+    Usuarios
 }
